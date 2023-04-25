@@ -1,0 +1,808 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <style>
+        body {
+            margin: auto;
+            padding: 50px 10px;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .serif {
+            font-family: 'Lora', serif;
+        }
+
+        .sans-serif {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        /* choose a light or dark theme to add to the body tag. */
+        .dark-theme {
+            background-color: #151515;
+            color: #fbfbfb;
+        }
+
+        .light-theme {
+            background-color: white;
+            color: black;
+        }
+
+        .header {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .story-body,
+        .header,
+        .chart-section,
+        .footer {
+            margin: auto;
+            max-width: 700px;
+        }
+
+        .footer {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .chart-section.wide {
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .chart-section.wide p.chart-title {
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .chart-section.wide p.chart-subhead {
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        /* text styles */
+
+        /* https://cssgenerator.org/text-shadow-css-generator.html */
+        /* #shadow {
+            text-shadow: 3px 4px 2px rgba(233, 105, 105, 0.6);
+        } */
+
+
+        p.kicker {
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        h1.headline {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 0.25rem;
+            margin-top: 1rem;
+            font-weight: 800;
+        }
+
+        h2.subhead {
+            font-size: 1.4rem;
+            line-height: 2rem;
+            margin-bottom: 0;
+            margin-top: 15px;
+            font-weight: 400;
+        }
+
+        p.body-text {
+            font-size: 1.1rem;
+            line-height: 1.4;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        h3.section-head {
+            font-size: 2rem;
+            margin: 40px 0 10px 0;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .byline {
+            font-size: 1.1rem;
+            line-height: 0.75;
+            margin-top: 1.5rem;
+            font-weight: 500;
+        }
+
+        .date {
+            font-size: 0.85rem;
+            line-height: 1;
+            margin-top: 10px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+
+        p.note {
+            font-size: 0.85rem;
+        }
+
+        /* chart styles */
+
+        .chart-section {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px 0px;
+        }
+
+        .story-body .chart-section {
+            padding-top: 0px;
+        }
+
+
+        .chart-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        p.chart-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            max-width: 700px;
+            margin: 0px auto 5px auto;
+        }
+
+        p.chart-subhead {
+            margin: 0 auto;
+            max-width: 700px;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        p.chart-label {
+            margin: 0 0 5px 0;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .chart-row .chart {
+            width: 100%;
+            padding-right: 15px;
+            min-width: calc(25% - 15px);
+
+        }
+
+
+
+        p.chart-source {
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+
+
+
+
+        /* photos */
+
+        .photo-section {
+            padding: 30px 0px;
+            width: 100%;
+            margin: auto;
+            display: flex;
+            max-width: 1200px;
+        }
+
+        .photo {
+            width: 100%;
+            padding-right: 15px;
+        }
+
+        .photo img {
+            width: 100%;
+        }
+
+        p.caption {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* mobile */
+        @media (max-width:700px) {
+
+            .chart-row {
+                display: block;
+            }
+
+            .chart-row .chart {
+                padding: 0;
+            }
+
+            .photo-section {
+                display: block;
+            }
+
+            .photo {
+                padding: 0;
+            }
+
+        }
+    </style>
+    <style>
+        /* These are the styles for ai2html */
+
+        #g-template-laptop,
+        #g-template-medium,
+        #g-template-mobile {
+            display: none;
+        }
+
+        @media (max-width: 490px) {
+            #g-template-mobile {
+                display: block;
+            }
+        }
+
+        @media (min-width: 490px) and (max-width: 620px) {
+            #g-template-laptop {
+                display: block;
+            }
+        }
+
+        @media (min-width: 620px) {
+            #g-template-medium {
+                display: block;
+            }
+        }
+    </style>
+
+    <!-- google fonts: Open Sans (sans-serif) and Lora (serif) -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700&display=swap" rel="stylesheet">
+
+    <title>This is your title</title>
+</head>
+
+<body class="light-theme">
+    <!-- all of the content on your html page goes inside the body -->
+
+    <section class="header">
+        <p class="kicker">Optional kicker</p>
+        <h1 class="headline">Here is your headline</h1>
+        <h2 class="subhead">This is the subhead</h2>
+        <p class="byline">By YOUR NAME</p>
+        <p class="date">Published September 9, 2019</p>
+    </section>
+
+    <section class="story-body">
+        <p class="body-text serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+            qui officia deserunt mollit anim id est laborum.</p>
+        <p class="body-text serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+            qui officia deserunt mollit anim id est laborum.</p>
+    </section>
+
+    <section class="chart-section">
+        <div class="chart-row">
+            <div class="chart">
+
+              
+<!-- Generated by ai2html v0.111.0 - 2023-03-01 10:38 -->
+<!-- ai file: karnataka_map.ai -->
+<style media="screen,print">
+	#g-karnataka_map-box ,
+	#g-karnataka_map-box .g-artboard {
+		margin:0 auto;
+	}
+	#g-karnataka_map-box p {
+		margin:0;
+	}
+	#g-karnataka_map-box .g-aiAbs {
+		position:absolute;
+	}
+	#g-karnataka_map-box .g-aiImg {
+		position:absolute;
+		top:0;
+		display:block;
+		width:100% !important;
+	}
+	#g-karnataka_map-box .g-aiSymbol {
+		position: absolute;
+		box-sizing: border-box;
+	}
+	#g-karnataka_map-box .g-aiPointText p { white-space: nowrap; }
+	#g-karnataka_map-lg {
+		position:relative;
+		overflow:hidden;
+	}
+	#g-karnataka_map-lg p {
+		font-family:arial,helvetica,sans-serif;
+		font-weight:bold;
+		line-height:18px;
+		height:auto;
+		opacity:1;
+		letter-spacing:0em;
+		font-size:15px;
+		text-align:left;
+		color:rgb(0,0,0);
+		text-transform:none;
+		padding-bottom:0;
+		padding-top:0;
+		mix-blend-mode:normal;
+		font-style:normal;
+		position:static;
+	}
+	#g-karnataka_map-lg .g-pstyle0 {
+		height:18px;
+	}
+	#g-karnataka_map-lg .g-pstyle1 {
+		line-height:14px;
+		height:14px;
+		font-size:11px;
+		color:rgb(102,102,102);
+	}
+	#g-karnataka_map-lg .g-pstyle2 {
+		line-height:14px;
+		font-size:12px;
+	}
+	#g-karnataka_map-lg .g-pstyle3 {
+		line-height:16px;
+		height:16px;
+		font-size:13px;
+	}
+	#g-karnataka_map-lg .g-cstyle0 {
+		letter-spacing:-0.015em;
+	}
+	#g-karnataka_map-lg .g-cstyle1 {
+		letter-spacing:-0.01em;
+	}
+	#g-karnataka_map-lg .g-cstyle2 {
+		letter-spacing:-0.039em;
+	}
+	#g-karnataka_map-lg .g-cstyle3 {
+		font-weight:bold;
+	}
+	#g-karnataka_map-xs {
+		position:relative;
+		overflow:hidden;
+	}
+	#g-karnataka_map-xs p {
+		font-family:arial,helvetica,sans-serif;
+		font-weight:bold;
+		line-height:14px;
+		height:auto;
+		opacity:1;
+		letter-spacing:0em;
+		font-size:12px;
+		text-align:left;
+		color:rgb(0,0,0);
+		text-transform:none;
+		padding-bottom:0;
+		padding-top:0;
+		mix-blend-mode:normal;
+		font-style:normal;
+		position:static;
+	}
+	#g-karnataka_map-xs .g-pstyle0 {
+		height:14px;
+	}
+	#g-karnataka_map-xs .g-pstyle1 {
+		line-height:9px;
+		height:9px;
+		font-size:7px;
+		color:rgb(102,102,102);
+	}
+	#g-karnataka_map-xs .g-pstyle2 {
+		line-height:9px;
+		height:9px;
+		font-size:7px;
+	}
+	#g-karnataka_map-xs .g-cstyle0 {
+		letter-spacing:-0.015em;
+	}
+	#g-karnataka_map-xs .g-cstyle1 {
+		letter-spacing:-0.01em;
+	}
+	#g-karnataka_map-xs .g-cstyle2 {
+		letter-spacing:-0.039em;
+	}
+	#g-karnataka_map-xs .g-cstyle3 {
+		font-weight:bold;
+	}
+	#g-karnataka_map-sm {
+		position:relative;
+		overflow:hidden;
+	}
+	#g-karnataka_map-sm p {
+		font-family:arial,helvetica,sans-serif;
+		font-weight:bold;
+		line-height:18px;
+		height:auto;
+		opacity:1;
+		letter-spacing:0em;
+		font-size:15px;
+		text-align:left;
+		color:rgb(0,0,0);
+		text-transform:none;
+		padding-bottom:0;
+		padding-top:0;
+		mix-blend-mode:normal;
+		font-style:normal;
+		position:static;
+	}
+	#g-karnataka_map-sm .g-pstyle0 {
+		height:18px;
+	}
+	#g-karnataka_map-sm .g-pstyle1 {
+		line-height:14px;
+		height:14px;
+		font-size:11px;
+		color:rgb(102,102,102);
+	}
+	#g-karnataka_map-sm .g-pstyle2 {
+		line-height:14px;
+		font-size:12px;
+	}
+	#g-karnataka_map-sm .g-pstyle3 {
+		line-height:16px;
+		height:16px;
+		font-size:13px;
+	}
+	#g-karnataka_map-sm .g-cstyle0 {
+		letter-spacing:-0.015em;
+	}
+	#g-karnataka_map-sm .g-cstyle1 {
+		letter-spacing:-0.01em;
+	}
+	#g-karnataka_map-sm .g-cstyle2 {
+		letter-spacing:-0.039em;
+	}
+	#g-karnataka_map-sm .g-cstyle3 {
+		font-weight:bold;
+	}
+	#g-karnataka_map-md {
+		position:relative;
+		overflow:hidden;
+	}
+	#g-karnataka_map-md p {
+		font-family:arial,helvetica,sans-serif;
+		font-weight:bold;
+		line-height:23px;
+		height:auto;
+		opacity:1;
+		letter-spacing:0em;
+		font-size:20px;
+		text-align:left;
+		color:rgb(0,0,0);
+		text-transform:none;
+		padding-bottom:0;
+		padding-top:0;
+		mix-blend-mode:normal;
+		font-style:normal;
+		position:static;
+	}
+	#g-karnataka_map-md .g-pstyle0 {
+		height:23px;
+	}
+	#g-karnataka_map-md .g-pstyle1 {
+		line-height:18px;
+		height:18px;
+		font-size:15px;
+		color:rgb(102,102,102);
+	}
+	#g-karnataka_map-md .g-pstyle2 {
+		line-height:18px;
+		font-size:15px;
+	}
+	#g-karnataka_map-md .g-pstyle3 {
+		line-height:18px;
+		height:18px;
+		font-size:15px;
+	}
+	#g-karnataka_map-md .g-cstyle0 {
+		letter-spacing:-0.015em;
+	}
+	#g-karnataka_map-md .g-cstyle1 {
+		letter-spacing:-0.01em;
+	}
+	#g-karnataka_map-md .g-cstyle2 {
+		letter-spacing:-0.039em;
+	}
+	#g-karnataka_map-md .g-cstyle3 {
+		font-weight:bold;
+	}
+
+</style>
+
+<div id="g-karnataka_map-box" class="ai2html ai2html-responsive">
+
+	<!-- Artboard: lg -->
+	<div id="g-karnataka_map-lg" class="g-artboard" style="width:930px; height:565.314163328107px;" data-aspect-ratio="1.645" data-min-width="930">
+<div style=""></div>
+		<img id="g-karnataka_map-lg-img" class="g-karnataka_map-lg-img g-aiImg" alt="" src="ai2html/images/karnataka_map-lg.png"/>
+		<div id="g-ai0-1" class="g-lg g-aiAbs g-aiPointText" style="top:25.0759%;margin-top:-19.8px;left:24.9708%;width:478px;">
+			<p class="g-pstyle0">Karnataka s<span class="g-cstyle0">a</span>w a rise in hate crimes <span class="g-cstyle1">a</span>gainst Christians after CM </p>
+			<p class="g-pstyle0">Bas<span class="g-cstyle0">a</span>vraj Bommai announced anti&minus;co<span class="g-cstyle2">n</span>ve<span class="g-cstyle0">r</span>sion l<span class="g-cstyle0">a</span>ws.</p>
+		</div>
+		<div id="g-ai0-2" class="g-lg g-aiAbs g-aiPointText" style="top:31.2188%;margin-top:-8.5px;left:23.1183%;width:63px;">
+			<p class="g-pstyle1">9 cases</p>
+		</div>
+		<div id="g-ai0-3" class="g-lg g-aiAbs" style="top:32.0176%;left:42.0419%;width:26.6667%;">
+			<p class="g-pstyle2"><span class="g-cstyle3">September 2021 </span>saw the highest incidents of targetted harrasment, the same month as the announcement</p>
+		</div>
+		<div id="g-ai0-4" class="g-lg g-aiAbs g-aiPointText" style="top:59.1679%;margin-top:-8.5px;left:23.1183%;width:63px;">
+			<p class="g-pstyle1">3 cases</p>
+		</div>
+		<div id="g-ai0-5" class="g-lg g-aiAbs g-aiPointText" style="top:75.8027%;margin-top:-9.5px;left:32.0965%;width:51px;">
+			<p class="g-pstyle3">2018</p>
+		</div>
+		<div id="g-ai0-6" class="g-lg g-aiAbs g-aiPointText" style="top:75.8027%;margin-top:-9.5px;left:43.8758%;width:51px;">
+			<p class="g-pstyle3">2019</p>
+		</div>
+		<div id="g-ai0-7" class="g-lg g-aiAbs g-aiPointText" style="top:75.8027%;margin-top:-9.5px;left:68.9827%;width:51px;">
+			<p class="g-pstyle3">2021</p>
+		</div>
+		<div id="g-ai0-8" class="g-lg g-aiAbs g-aiPointText" style="top:75.9796%;margin-top:-9.5px;left:57.3095%;width:51px;">
+			<p class="g-pstyle3">2020</p>
+		</div>
+	</div>
+
+	<!-- Artboard: xs -->
+	<div id="g-karnataka_map-xs" class="g-artboard" style="max-width: 330px;max-height: 217px" data-aspect-ratio="1.524" data-min-width="0" data-max-width="509">
+<div style="padding: 0 0 65.6103% 0;"></div>
+		<img id="g-karnataka_map-xs-img" class="g-karnataka_map-xs-img g-aiImg" alt="" src="ai2html/images/karnataka_map-xs.png"/>
+		<div id="g-ai1-1" class="g-xs g-aiAbs g-aiPointText" style="top:9.9791%;margin-top:-15.6px;left:1.9943%;width:335px;">
+			<p class="g-pstyle0">Karnataka s<span class="g-cstyle0">a</span>w a rise in hate crimes <span class="g-cstyle1">a</span>gainst Christians </p>
+			<p class="g-pstyle0">after CM Bommai announced anti&minus;co<span class="g-cstyle2">n</span>ve<span class="g-cstyle0">r</span>sion l<span class="g-cstyle0">a</span>ws.</p>
+		</div>
+		<div id="g-ai1-2" class="g-xs g-aiAbs g-aiPointText" style="top:21.4482%;margin-top:-5.4px;left:1.9246%;width:48px;">
+			<p class="g-pstyle1">9 cases</p>
+		</div>
+		<div id="g-ai1-3" class="g-xs g-aiAbs" style="top:23.555%;left:18.4519%;width:55.1515%;">
+			<p><span class="g-cstyle3">September 2021 </span>saw the highest incidents of harrasment, the same month as the announcement</p>
+		</div>
+		<div id="g-ai1-4" class="g-xs g-aiAbs g-aiPointText" style="top:68.0965%;margin-top:-5.4px;left:1.9246%;width:48px;">
+			<p class="g-pstyle1">3 cases</p>
+		</div>
+		<div id="g-ai1-5" class="g-xs g-aiAbs g-aiPointText" style="top:95.8083%;margin-top:-5.4px;left:18.0035%;width:38px;">
+			<p class="g-pstyle2">2018</p>
+		</div>
+		<div id="g-ai1-6" class="g-xs g-aiAbs g-aiPointText" style="top:95.8083%;margin-top:-5.4px;left:39.0989%;width:38px;">
+			<p class="g-pstyle2">2019</p>
+		</div>
+		<div id="g-ai1-7" class="g-xs g-aiAbs g-aiPointText" style="top:95.8083%;margin-top:-5.4px;left:84.0622%;width:38px;">
+			<p class="g-pstyle2">2021</p>
+		</div>
+		<div id="g-ai1-8" class="g-xs g-aiAbs g-aiPointText" style="top:95.8083%;margin-top:-5.4px;left:63.1573%;width:38px;">
+			<p class="g-pstyle2">2020</p>
+		</div>
+	</div>
+
+	<!-- Artboard: sm -->
+	<div id="g-karnataka_map-sm" class="g-artboard" style="width:510px; height:325.696671362638px;" data-aspect-ratio="1.566" data-min-width="510" data-max-width="659">
+<div style=""></div>
+		<img id="g-karnataka_map-sm-img" class="g-karnataka_map-sm-img g-aiImg" alt="" src="ai2html/images/karnataka_map-sm.png"/>
+		<div id="g-ai2-1" class="g-sm g-aiAbs g-aiPointText" style="top:8.8296%;margin-top:-19.8px;left:3.5464%;width:478px;">
+			<p class="g-pstyle0">Karnataka s<span class="g-cstyle0">a</span>w a rise in hate crimes <span class="g-cstyle1">a</span>gainst Christians after CM </p>
+			<p class="g-pstyle0">Bas<span class="g-cstyle0">a</span>vraj Bommai announced anti&minus;co<span class="g-cstyle2">n</span>ve<span class="g-cstyle0">r</span>sion l<span class="g-cstyle0">a</span>ws.</p>
+		</div>
+		<div id="g-ai2-2" class="g-sm g-aiAbs g-aiPointText" style="top:19.4919%;margin-top:-8.5px;left:0.1682%;width:63px;">
+			<p class="g-pstyle1">9 cases</p>
+		</div>
+		<div id="g-ai2-3" class="g-sm g-aiAbs" style="top:20.8783%;left:34.676%;width:48.6275%;">
+			<p class="g-pstyle2"><span class="g-cstyle3">September 2021 </span>saw the highest incidents of targetted harrasment, the same month as the announcement</p>
+		</div>
+		<div id="g-ai2-4" class="g-sm g-aiAbs g-aiPointText" style="top:68.0033%;margin-top:-8.5px;left:0.1682%;width:63px;">
+			<p class="g-pstyle1">3 cases</p>
+		</div>
+		<div id="g-ai2-5" class="g-sm g-aiAbs g-aiPointText" style="top:97.1835%;margin-top:-9.5px;left:16.5404%;width:51px;">
+			<p class="g-pstyle3">2018</p>
+		</div>
+		<div id="g-ai2-6" class="g-sm g-aiAbs g-aiPointText" style="top:97.1835%;margin-top:-9.5px;left:38.0202%;width:51px;">
+			<p class="g-pstyle3">2019</p>
+		</div>
+		<div id="g-ai2-7" class="g-sm g-aiAbs g-aiPointText" style="top:97.1835%;margin-top:-9.5px;left:83.8033%;width:51px;">
+			<p class="g-pstyle3">2021</p>
+		</div>
+		<div id="g-ai2-8" class="g-sm g-aiAbs g-aiPointText" style="top:97.1835%;margin-top:-9.5px;left:62.517%;width:51px;">
+			<p class="g-pstyle3">2020</p>
+		</div>
+	</div>
+
+	<!-- Artboard: md -->
+	<div id="g-karnataka_map-md" class="g-artboard" style="width:660px; height:420.410179466533px;" data-aspect-ratio="1.57" data-min-width="660" data-max-width="929">
+<div style=""></div>
+		<img id="g-karnataka_map-md-img" class="g-karnataka_map-md-img g-aiImg" alt="" src="ai2html/images/karnataka_map-md.png"/>
+		<div id="g-ai3-1" class="g-md g-aiAbs g-aiPointText" style="top:8.3919%;margin-top:-25.3px;left:4.4648%;width:615px;">
+			<p class="g-pstyle0">Karnataka s<span class="g-cstyle0">a</span>w a rise in hate crimes <span class="g-cstyle1">a</span>gainst Christians after CM </p>
+			<p class="g-pstyle0">Bas<span class="g-cstyle0">a</span>vraj Bommai announced anti&minus;co<span class="g-cstyle2">n</span>ve<span class="g-cstyle0">r</span>sion l<span class="g-cstyle0">a</span>ws.</p>
+		</div>
+		<div id="g-ai3-2" class="g-md g-aiAbs g-aiPointText" style="top:19.1583%;margin-top:-10.5px;left:1.0847%;width:75px;">
+			<p class="g-pstyle1">9 cases</p>
+		</div>
+		<div id="g-ai3-3" class="g-md g-aiAbs" style="top:23.3106%;left:45.9496%;width:38.3333%;">
+			<p class="g-pstyle2"><span class="g-cstyle3">September 2021 </span>saw the highest incidents of targetted harrasment in, the same month as the announcement</p>
+		</div>
+		<div id="g-ai3-4" class="g-md g-aiAbs g-aiPointText" style="top:67.9202%;margin-top:-10.5px;left:1.0847%;width:75px;">
+			<p class="g-pstyle1">3 cases</p>
+		</div>
+		<div id="g-ai3-5" class="g-md g-aiAbs g-aiPointText" style="top:96.9395%;margin-top:-10.5px;left:17.4656%;width:55px;">
+			<p class="g-pstyle3">2018</p>
+		</div>
+		<div id="g-ai3-6" class="g-md g-aiAbs g-aiPointText" style="top:96.9395%;margin-top:-10.5px;left:38.9565%;width:55px;">
+			<p class="g-pstyle3">2019</p>
+		</div>
+		<div id="g-ai3-7" class="g-md g-aiAbs g-aiPointText" style="top:96.9395%;margin-top:-10.5px;left:84.7638%;width:55px;">
+			<p class="g-pstyle3">2021</p>
+		</div>
+		<div id="g-ai3-8" class="g-md g-aiAbs g-aiPointText" style="top:96.9395%;margin-top:-10.5px;left:63.4663%;width:55px;">
+			<p class="g-pstyle3">2020</p>
+		</div>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+	(function (containerId, opts) {
+			var nameSpace = opts.namespace || '';
+			var containers = findContainers(containerId);
+			containers.forEach(resize);
+
+			function resize(container) {
+				var onResize = throttle(update, 200);
+				var waiting = !!window.IntersectionObserver;
+				var observer;
+				update();
+
+				document.addEventListener('DOMContentLoaded', update);
+				window.addEventListener('resize', onResize);
+
+				// NYT Scoop-specific code
+				if (opts.setup) {
+					opts.setup(container).on('cleanup', cleanup);
+				}
+
+				function cleanup() {
+					document.removeEventListener('DOMContentLoaded', update);
+					window.removeEventListener('resize', onResize);
+					if (observer) observer.disconnect();
+				}
+
+				function update() {
+					var artboards = selectChildren('.' + nameSpace + 'artboard[data-min-width]', container),
+						width = Math.round(container.getBoundingClientRect().width);
+
+					// Set artboard visibility based on container width
+					artboards.forEach(function (el) {
+						var minwidth = el.getAttribute('data-min-width'),
+							maxwidth = el.getAttribute('data-max-width');
+						if (+minwidth <= width && (+maxwidth >= width || maxwidth === null)) {
+							if (!waiting) {
+								selectChildren('.' + nameSpace + 'aiImg', el).forEach(updateImgSrc);
+							}
+							el.style.display = 'block';
+						} else {
+							el.style.display = 'none';
+						}
+					});
+
+					// Initialize lazy loading on first call
+					if (waiting && !observer) {
+						if (elementInView(container)) {
+							waiting = false;
+							update();
+						} else {
+							observer = new IntersectionObserver(onIntersectionChange, {});
+							observer.observe(container);
+						}
+					}
+				}
+
+				function onIntersectionChange(entries) {
+					// There may be multiple entries relating to the same container
+					// (captured at different times)
+					var isIntersecting = entries.reduce(function (memo, entry) {
+						return memo || entry.isIntersecting;
+					}, false);
+					if (isIntersecting) {
+						waiting = false;
+						// update: don't remove -- we need the observer to trigger an update
+						// when a hidden map becomes visible after user interaction
+						// (e.g. when an accordion menu or tab opens)
+						// observer.disconnect();
+						// observer = null;
+						update();
+					}
+				}
+			}
+
+			function findContainers(id) {
+				// support duplicate ids on the page
+				return selectChildren('.ai2html-responsive', document).filter(function (el) {
+					if (el.getAttribute('id') != id) return false;
+					if (el.classList.contains('ai2html-resizer')) return false;
+					el.classList.add('ai2html-resizer');
+					return true;
+				});
+			}
+
+			// Replace blank placeholder image with actual image
+			function updateImgSrc(img) {
+				var src = img.getAttribute('data-src');
+				if (src && img.getAttribute('src') != src) {
+					img.setAttribute('src', src);
+				}
+			}
+
+			function elementInView(el) {
+				var bounds = el.getBoundingClientRect();
+				return bounds.top < window.innerHeight && bounds.bottom > 0;
+			}
+
+			function selectChildren(selector, parent) {
+				return parent ? Array.prototype.slice.call(parent.querySelectorAll(selector)) : [];
+			}
+
+			// based on underscore.js
+			function throttle(func, wait) {
+				var timeout = null, previous = 0;
+				function run() {
+					previous = Date.now();
+					timeout = null;
+					func();
+				}
+				return function () {
+					var remaining = wait - (Date.now() - previous);
+					if (remaining <= 0 || remaining > wait) {
+						clearTimeout(timeout);
+						run();
+					} else if (!timeout) {
+						timeout = setTimeout(run, remaining);
+					}
+				};
+			}
+		})("g-karnataka_map-box", {namespace: "g-", setup: window.setupInteractive || window.getComponent});
+</script>
+<!-- End ai2html - 2023-03-01 10:38 -->
+
+
+            </div>
+        </div>
+    </section>
+
+    <section class="story-body">
+        <p class="body-text serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+            qui officia deserunt mollit anim id est laborum.</p>
+        <p class="body-text serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+            qui officia deserunt mollit anim id est laborum.</p>
+    </section>
+
+</body>
+
+</html>
